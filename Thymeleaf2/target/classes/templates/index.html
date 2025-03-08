@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Product Application</title>
+</head>
+<body>
+
+
+<p th:text="${msg}"></p>
+
+<div class="mt-5 ml-2">
+
+	<a th:href="@{/products}" class="btn btn-primary">View Products</a>
+</div>
+
+	<h2 >Product form </h2>
+		<div>
+		<form th:action="@{/save}" th:object="${product}" method="post">
+		
+		<input type="hidden" th:field="*{id}">
+				<div class="form-group">
+				
+				<div>
+				<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger">
+				</div>
+				    <label for="Name">Name:</label>
+				    <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="name of product">
+				  </div>
+				  <div class="form-group">
+				  <div>
+				<p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger">
+				</div>
+				    <label for="price">Price:</label>
+				    <input type="number" th:field="*{price}" class="form-control" id="price" placeholder="Irice">
+				  </div>
+				  
+				  <div class="form-group">
+				  <div>
+				<p th:if="${#fields.hasErrors('qty')}" th:errors="*{qty}" class="text-danger">
+				</div>
+				    <label for="quantity">Quantity:</label>
+				    <input type="text" th:field="*{qty}" class="form-control" id="qty" placeholder="how much quantity">
+				  </div>
+				<div class="text-center">
+								<button type="submit" class="Btn btn-primary">submit</button>				
+				
+				</div>
+
+		</form> 
+	
+	</div>
+	
+</body>
+</html>
